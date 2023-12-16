@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Number</title>
+  <style>
+    body {
+      display: flex;
+      align-items:  flex-start;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .my-button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 5px; 
+    }
+
+    h1 {
+      text-align: center;
+    }
+  </style>
+  <script>
+    function guessNumberGame() {
+      var correctNumber = Math.floor(Math.random() * 10) + 1;
+      var userGuess;
+
+      while (true) {
+        userGuess = prompt("Guess the number between 1 and 10:");
+
+        if (userGuess === null) {
+          // If user clicks cancel, exit the game
+          break;
+        }
+
+        userGuess = parseInt(userGuess);
+
+        if (isNaN(userGuess)) {
+          alert("Please enter a valid number.");
+        } else if (userGuess < 1 || userGuess > 10) {
+          alert("Please enter a number between 1 and 10.");
+        } else {
+          if (userGuess === correctNumber) {
+            alert("Congratulations! You guessed the correct number: " + correctNumber);
+            break;
+          } else {
+            alert("Incorrect guess. Try again!");
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Guess the Number Game</h1>
+    <button class="my-button" onclick="guessNumberGame()">Start Game</button>
+  </div>
+</body>
+</html>
